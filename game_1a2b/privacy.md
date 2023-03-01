@@ -1,6 +1,11 @@
-# 1A2B猜數字——隱私權政策 Privacy Policy
+*   [正體中文](#1a2b猜數字)
+*   [English](#bulls-and-cows)
+
+# 1A2B猜數字
 
 很高興您喜歡「1A2B猜數字」（之後統一稱為「本應用程式」），為了讓您能夠安心的使用本應用程式的各項服務與資訊，特此向您說明本應用程式的隱私權保護政策，以保障您的權益，請您詳閱下列內容：
+
+## 隱私權政策
 
 ### 一、隱私權保護政策的適用範圍  
 
@@ -42,3 +47,68 @@
 ### 七、隱私權保護政策之修正
 
 本應用程式隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於網站上。
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Bulls and cows
+
+## Privacy Policy
+
+### 1. Scope of application of privacy protection policy
+
+The content of the privacy protection policy, including how this application handles personally identifiable information collected when you use the service. The privacy protection policy does not apply to related linked websites other than this application, nor does it apply to personnel who are not entrusted or participate in the management of this application.
+
+### 2. Collection, processing and use of personal data
+
+* When you download this application or use the functional services provided by this application, we will consider the nature of the service function and ask you to provide the necessary personal information, and process and use your personal information within the scope of the specific purpose; Without your written consent, this application will not use personal data for other purposes.
+* This application will retain the name, email address, contact information and usage time you provided when you use the service mailbox, member operation and other functions.
+* During general browsing, the server will record relevant behaviors by itself, including the IP address of the connected device you use, the time of use, the operating system you use, browsing and clicking data records, etc., as a reference for us to improve our services, This record is for internal use and will never be released to the public.
+
+### 3. Data Protection
+
+* This application host is equipped with firewalls, anti-virus systems and other related information security equipment and necessary security protection measures to protect the website and your personal data. Strict protection measures are adopted, and only authorized personnel can contact you For personal data, the relevant processing personnel have signed a confidentiality contract, and those who violate the confidentiality obligation will be subject to relevant legal sanctions.
+* If it is necessary to entrust other units to provide services due to business needs, this application will also strictly require them to abide by their confidentiality obligations, and take necessary inspection procedures to ensure that they will actually comply.
+
+### 4. External related links
+
+You can also click to enter other websites through the links provided by this application. However, the linked website does not apply to the privacy protection policy of this application, and you must refer to the privacy protection policy in the linked website.
+
+### 5. Policy on sharing personal data with third parties
+
+This application will never provide, exchange, rent or sell any of your personal information to other individuals, groups, private companies or public agencies, but there is no legal basis or contractual obligations.
+
+The circumstances of the proviso in the preceding paragraph include but are not limited to:
+
+* With your written consent.
+* As expressly provided by law.
+* To avoid danger to your life, body, liberty or property.
+* Cooperation with public agencies or academic research institutions is necessary for statistical or academic research based on public interests, and the data is processed by the provider or the collector cannot identify a specific party based on the way it is disclosed.
+* When your behavior on the website violates the terms of service or may damage or hinder the rights and interests of the website and other users or cause anyone to suffer damage, the website management unit researches and discloses your personal information for the purpose of identifying, contacting or taking legal action necessary.
+* In favor of your interests.
+* When the app entrusts the vendor to assist in the collection, processing or use of your personal data, it will be responsible for the supervision and management of the outsourced vendor or individual.
+
+### 6. Use of Temporary Data
+
+In order to provide you with the best service, this app will store some temporary data in your device, including but not limited to member trust certificates and game records. If there is sensitive data, it will also be encrypted before storage.
+
+### 7. Amendments to Privacy Protection Policy
+
+This application privacy protection policy will be amended at any time in response to demand, and the amended terms will be published on the website.
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
