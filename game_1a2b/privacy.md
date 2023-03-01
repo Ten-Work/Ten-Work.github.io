@@ -60,6 +60,8 @@
 
 # Bulls and cows
 
+I'm glad you like "Bulls and cows" (hereafter collectively referred to as "this application"). In order to allow you to use the various services and information of this application with peace of mind, hereby explain to you the privacy protection policy of this application , to protect your rights and interests, please read the following content carefully:
+
 ## Privacy Policy
 
 ### 1. Scope of application of privacy protection policy
