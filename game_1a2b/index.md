@@ -7,7 +7,7 @@
 
 ###  規則簡介
 
-1A2B是一個益智遊戲，根據提供的線索猜測出正確順序的一串不重複數字。
+1A2B是一款益智遊戲，根據線索猜出正確順序的一串不重複數字。
 
 *   猜測出1個數字，且位置正確，線索顯示1A；猜測出2個顯示2A，以此類推。
 *   猜測出1個數字，但位置錯誤，線索顯示1B；猜測出2個顯示2B，以此類推。
@@ -37,7 +37,7 @@ Glad that you like "Bulls and cows" (hereinafter collectively referred to as "th
 
 ###  Introduction to the rules
 
-Bulls and cows is a puzzle game, guess a string of non-repeating numbers in the correct order according to the clues provided.
+Bulls and Cows is a puzzle game that uses clues to guess a string of unique numbers in the correct order.
 
 * If one number is guessed and the position is correct, the clue will display 1A; if two numbers are guessed, 2A will be displayed, and so on.
 * Guess 1 number, but the location is wrong, the clue shows 1B; guesses 2 numbers, shows 2B, and so on.
