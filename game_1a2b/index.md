@@ -39,9 +39,9 @@ Glad that you like "Bulls and cows" (hereinafter collectively referred to as "th
 
 Bulls and Cows is a puzzle game that uses clues to guess a string of unique numbers in the correct order.
 
-* If one number is guessed and the position is correct, the clue will display 1A; if two numbers are guessed, 2A will be displayed, and so on.
-* Guess 1 number, but the location is wrong, the clue shows 1B; guesses 2 numbers, shows 2B, and so on.
-* If all numbers are guessed wrong, the clue shows 0A0B.
+* If one number is guessed right and the position is correct, provide clue 1A. If two numbers are guessed right, provide clue 2A, and so on.
+* If one number is guessed right and the position is wrong, provide clue 1B. If two numbers are guessed right, provide clue 2B, and so on.
+* If all numbers are guessed wrong, provide clue 0A0B.
 
 ###  Developer
 
