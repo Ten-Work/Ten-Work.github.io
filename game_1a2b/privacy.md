@@ -1,4 +1,6 @@
-# 隱私權政策
+---
+title: 1A2B 猜數字 隱私權政策
+--- 
 
 *   [正體中文](#1a2b-猜數字)
 *   [English](#bulls-and-cows)
