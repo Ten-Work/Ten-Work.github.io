@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紅包分配計算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>紅包分配計算器</h1>
+        <form id="redEnvelopeForm">
+            <label for="salary">月薪（台幣）：</label>
+            <input type="number" id="salary" placeholder="例如：40000" min="0" required>
+
+            <label for="budget">願意支出的總金額（台幣）：</label>
+            <input type="number" id="budget" placeholder="例如：10000" min="0" required>
+
+            <fieldset>
+                <legend>輸入人數</legend>
+                <label for="parents">父母：</label>
+                <input type="number" id="parents" placeholder="例如：2" min="0">
+
+                <label for="parentsInLaw">公婆：</label>
+                <input type="number" id="parentsInLaw" placeholder="例如：2" min="0">
+
+                <label for="grandparents">祖父母、外公外婆：</label>
+                <input type="number" id="grandparents" placeholder="例如：2" min="0">
+
+                <label for="relatives">親戚長輩：</label>
+                <input type="number" id="relatives" placeholder="例如：3" min="0">
+
+                <label for="ownChildren">自己小孩：</label>
+                <input type="number" id="ownChildren" placeholder="例如：1" min="0">
+
+                <label for="friendsChildren">親友小孩：</label>
+                <input type="number" id="friendsChildren" placeholder="例如：3" min="0">
+
+                <label for="siblings">兄弟姐妹：</label>
+                <input type="number" id="siblings" placeholder="例如：2" min="0">
+            </fieldset>
+
+            <button type="submit">計算紅包分配</button>
+        </form>
+
+        <div id="results" class="hidden">
+            <h2>分配結果</h2>
+            <ul id="distributionList"></ul>
+            <p>總支出：<span id="totalSpent"></span> 台幣</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5174385888424925"
+     crossorigin="anonymous"></script>
+</body>
+</html>
