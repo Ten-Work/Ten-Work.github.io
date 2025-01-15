@@ -144,3 +144,12 @@ li {
 #custom-gifts input {
     margin: 10px 0;
 }
+
+footer {
+    text-align: center;
+    padding: 5px;
+    background-color: #abbaba;
+    color: #000;
+  }
+
+  
