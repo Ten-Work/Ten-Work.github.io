@@ -3,55 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>紅包分配計算器</title>
+    <title>紅包計算器</title>
     <link rel="stylesheet" href="styles.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5174385888424925"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <h1>紅包分配計算器</h1>
-        <form id="redEnvelopeForm">
-            <label for="salary">月薪（台幣）：</label>
-            <input type="number" id="salary" placeholder="例如：40000" min="0" required>
-
-            <label for="budget">願意支出的總金額（台幣）：</label>
-            <input type="number" id="budget" placeholder="例如：10000" min="0" required>
-
-            <fieldset>
-                <legend>輸入人數</legend>
-                <label for="parents">父母：</label>
-                <input type="number" id="parents" placeholder="例如：2" min="0">
-
-                <label for="parentsInLaw">公婆：</label>
-                <input type="number" id="parentsInLaw" placeholder="例如：2" min="0">
-
-                <label for="grandparents">祖父母、外公外婆：</label>
-                <input type="number" id="grandparents" placeholder="例如：2" min="0">
-
-                <label for="relatives">親戚長輩：</label>
-                <input type="number" id="relatives" placeholder="例如：3" min="0">
-
-                <label for="ownChildren">自己小孩：</label>
-                <input type="number" id="ownChildren" placeholder="例如：1" min="0">
-
-                <label for="friendsChildren">親友小孩：</label>
-                <input type="number" id="friendsChildren" placeholder="例如：3" min="0">
-
-                <label for="siblings">兄弟姐妹：</label>
-                <input type="number" id="siblings" placeholder="例如：2" min="0">
-            </fieldset>
-
-            <button type="submit">計算紅包分配</button>
-        </form>
-
-        <div id="results" class="hidden">
-            <h2>分配結果</h2>
-            <ul id="distributionList"></ul>
-            <p>總支出：<span id="totalSpent"></span> 台幣</p>
+        <h1>紅包計算器</h1>
+        <div class="input-group">
+            <label for="salary">月薪：</label>
+            <input type="number" id="salary" placeholder="輸入月薪">
         </div>
+        <hr>
+        <div id="recipients">
+            <div class="recipient-group">
+                <input type="checkbox" id="parents-toggle" class="checkbox" checked>
+                <label for="parents-toggle">父母/公婆</label>
+                <div id="parents-toggle" class="div_box">
+                    人數：<input type="number" id="parents-count" min="0" value="0" class="short-input">
+                    金額：<input type="number" id="parents-amount" min="0" step="100" value="6000">
+                    <span id="parents-range" class="hint"></span>
+                </div>
+            </div>
+            <div class="recipient-group">
+                <input type="checkbox" id="grandparents-toggle" class="checkbox">
+                <label for="grandparents-toggle">祖父母/外公外婆</label>
+                <div id="grandparents-toggle" class="div_box">
+                    人數：<input type="number" id="grandparents-count" min="0" value="0" class="short-input">
+                    金額：<input type="number" id="grandparents-amount" min="0" step="100" value="3600">
+                    <span id="grandparents-range" class="hint"></span>
+                </div>
+            </div>
+            <div class="recipient-group">
+                <input type="checkbox" id="ownChildren-toggle" class="checkbox">
+                <label for="ownChildren-toggle">自己小孩</label>
+                <div id="ownChildren-toggle" class="div_box">
+                    人數：<input type="number" id="ownChildren-count" min="0" value="0" class="short-input">
+                    金額：<input type="number" id="ownChildren-amount" min="0" step="100" value="1000">
+                    <span id="ownChildren-range" class="hint"></span>
+                </div>
+            </div>
+            <div class="recipient-group">
+                <input type="checkbox" id="siblings-toggle" class="checkbox">
+                <label for="siblings-toggle">兄弟姐妹</label>
+                <div id="siblings-toggle" class="div_box">
+                    人數：<input type="number" id="siblings-count" min="0" value="0" class="short-input">
+                    金額：<input type="number" id="siblings-amount" min="0" step="100" value="1000">
+                    <span id="siblings-range" class="hint"></span>
+                </div>
+            </div>
+            <div class="recipient-group">
+                <input type="checkbox" id="relatives-toggle" class="checkbox">
+                <label for="relatives-toggle">親戚長輩</label>
+                <div id="relatives-toggle" class="div_box">
+                    人數：<input type="number" id="relatives-count" min="0" value="0" class="short-input">
+                    金額：<input type="number" id="relatives-amount" min="0" step="100" value="1200">
+                    <span id="relatives-range" class="hint"></span>
+                </div>
+            </div>
+            <div class="recipient-group">
+                <input type="checkbox" id="friendsChildren-toggle" class="checkbox">
+                <label for="friendsChildren-toggle">親友小孩</label>
+                <div id="friendsChildren-toggle" class="div_box">
+                    人數：<input type="number" id="friendsChildren-count" min="0" value="0" class="short-input">
+                    金額：<input type="number" id="friendsChildren-amount" min="0" step="100" value="200">
+                    <span id="friendsChildren-range" class="hint"></span>
+                </div>
+            </div>
+            <div id="custom-gifts-section">
+                <button id="add-custom-gift">新增特殊紅包</button>
+                <div id="custom-gifts"></div>
+            </div>
+            <hr>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" id="use-500"> 使用500元鈔票
+                </label>
+            </div>
+        </div>
+        <hr>
+        <button class="btn" onclick="calculate()">計算</button>
+        <h2>結果</h2>
+        <p id="total">總紅包金額：0 TWD</p>
+        <p>需要鈔票：</p>
+        <ul>
+            <li>1000元：<span id="cash-1000"></span> 張</li>
+            <li>&ensp;500元：<span id="cash-500"></span> 張</li>
+            <li>&ensp;100元：<span id="cash-100"></span> 張</li>
+        </ul>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

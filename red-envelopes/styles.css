@@ -1,91 +1,146 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
 }
 
 .container {
     max-width: 600px;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
 }
 
 h1 {
     text-align: center;
-    color: #ff5722;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group, .recipient-group {
+    margin-bottom: 15px;
 }
 
 label {
-    display: block;
-    margin: 10px 0 5px;
     font-weight: bold;
+    margin-right: 10px;
+    color: #555;
 }
 
-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+input[type="number"] {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: right;
+    font-size: 14px;
 }
 
-fieldset {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-legend {
-    padding: 0 10px;
-    font-weight: bold;
-}
-
-button {
-    display: block;
-    width: 100%;
-    background: #ff5722;
-    color: #fff;
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
     border: none;
-    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+ul {
+    padding-left: 20px;
+    list-style: none;
+}
+
+li {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#total {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Recipient Group Styling */
+#recipients .recipient-group {
+    margin-bottom: 15px;
+}
+
+#recipients label {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* General Input Fields */
+#recipients input[type="number"] {
+    margin-left: 5px;
+}
+
+/* Shorter Input Fields */
+.short-input {
+    width: 50px  !important; /* Narrower for two-digit inputs */
+    margin-left: 5px;
+}
+
+/* Hint Styling for Suggestion Range */
+.hint {
+    display: inline-block;
+    margin-left: 10px;
+    background-color: #ffe4e1; /* Light pink for festive tone */
+    color: #d32f2f; /* Deep red for contrast */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Align Details Section */
+#recipients div {
+    align-items: center;
+    margin-top: 5px;
+}
+
+.div_box {
+    display: none;
+}
+
+.checkbox:checked + label + .div_box {
+    display: block;
+}
+
+#custom-gifts-section {
+    margin-top: 20px;
+}
+
+#add-custom-gift {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
 }
 
-button:hover {
-    background: #e64a19;
-}
-
-.hidden {
-    display: none;
-}
-
-#results {
-    margin-top: 20px;
-    background: #fbe9e7;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-#results h2 {
-    color: #d84315;
-}
-
-#distributionList {
-    list-style: none;
-    padding: 0;
-}
-
-#distributionList li {
-    margin: 5px 0;
-    padding: 5px;
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+#custom-gifts input {
+    margin: 10px 0;
 }
