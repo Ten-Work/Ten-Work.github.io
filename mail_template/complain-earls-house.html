@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《變成伯爵家的混混》向韓國版權方申訴懶人包</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+        }
+        #error {
+            color: red;
+            display: none;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:active {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+    <h2>《變成伯爵家的混混》向韓國版權方申訴懶人包</h2>
+    
+    <input type="text" id="name" placeholder="請輸入您的名稱">
+    <div id="error">⚠️ 請輸入您的署名</div>
+    <br/>
+    <button onclick="sendMail()">點我發信</button>
+    <p>🔍 想了解更多？請參考 <a href="https://www.plurk.com/p/3gyjtgycdo" target="_blank">噗浪討論串</a>。</p>
+
+    <script>
+        function sendMail() {
+            let nameInput = document.getElementById("name");
+            let userName = nameInput.value.trim();  // 去除空格
+            let errorText = document.getElementById("error");
+
+            if (userName === "") {
+                errorText.style.display = "block";  // 顯示錯誤訊息
+                nameInput.focus();  // 聚焦輸入框
+                return;
+            } else {
+                errorText.style.display = "none";  // 隱藏錯誤訊息
+            }
+            let recipient = "chungeorambook@daum.net, chungeorambook@hanmail.net";  // 收件人
+            let subject = "제목: [대만판 \"백작가의 망나니가 되었다\"] 심각한 번역 문제 신고";  // 主旨
+            let body = `청어람 출판사 관계자님께,
+안녕하세요.
+저희는 "백작가의 망나니가 되었다"를 애정하는 대만 독자들입니다.
+대만의 딥 스페이스 출판사에서 출판한 귀사의 작품 "백작가의 망나니가 되었다"의 대만어 번역본에 관한 심각한 문제점을 알려드리고자 이 편지를 씁니다.
+
+한국 문학을 사랑하는 독자로서, 대만 출판사가 원작의 완성도를 심각하게 훼손한 번역본을 출간했음을 알리는 것이 필요하다고 생각합니다.
+저희가 검토한 결과, 다음과 같은 문제점이 발견되었습니다.
+
+1.출판사는 전문 번역가가 아닌 기계 번역 도구를 사용한 것으로 보입니다.
+2.여러 문장이 완전히 누락되었습니다.
+3.등장인물의 이름과 주요 용어가 잘못 번역되었습니다.
+4.중요한 스토리 요소가 왜곡되어 흐름을 따라가기 어렵습니다.
+
+자세한 오류 내용은 아래 문서를 참고해 주십시오.
+문서 링크: https://docs.google.com/spreadsheets/d/e/2PACX-1vSQWEcMpkf3H6Rfsn8Ww-ONc_WAnTSP9gFAGplZfptaU_7nXgJlX7-7_q2kx37Q9x_m96RRiDOIOZeK/pubhtml
+
+이러한 문제는 대만 독자들 사이에서 큰 논란을 일으켰으며, 많은 독자들이 소셜 미디어와 서평 사이트에서 실망감을 표현하고 있습니다.
+특히, 원작 한국어를 모르는 독자들이 이 번역본을 통해 작품을 접하면서 부정적인 인상을 가질 가능성이 크다는 점이 우려됩니다.
+독자들의 공식 항의에도 불구하고, 대만 출판사는 이러한 문제를 제대로 해결하지 못했습니다.
+그들은 문제의 심각성을 인정하거나 수많은 번역 오류를 수정하기보다는, 일부 누락된 문장만 보완하는 미흡한 조치를 취했습니다.
+이러한 대응은 충분하지 않으며, 귀사의 지적 재산권에 대한 적절한 존중도 보여주지 않고 있습니다.
+이에, 딥 스페이스 출판사와의 라이선스 계약을 검토하시고, 원작의 완전성을 보장할 수 있는 적절한 번역 기준을 요구해 주시길 부탁드립니다.
+귀사의 소중한 작품이 대만에서 잘못 전달되고 있는 현실을 알리고자 합니다. 현재의 번역본은 귀하의 창작 의도를 제대로 반영하지 못할 뿐만 아니라, 작품의 명성에도 부정적인 영향을 미치고 있습니다.
+
+이 문제에 관심을 가져주셔서 감사드리며, 바쁘신 와중에 메일을 읽어 주셔서 감사합니다.
+회신을 기다리겠습니다. 좋은 하루 보내세요.
+
+"백작가의 망나니가 되었다"를 사랑하는 대만 독자 올림
+-
+Dear Publisher,
+
+We are writing to bring to your attention serious concerns regarding the quality of the Traditional Chinese translation of the work "變成伯爵家的混混" (《백작가의 망나니가 되었다》) published by Interstellar Publishing in Taiwan.
+As devoted readers of Korean novels, we feel obligated to inform you that the Taiwanese publisher has produced a translation that severely compromises the integrity of the original work. Based on our review, we have discovered that:
+1. The publisher appears to be using machine translation tools rather than professional translators
+2. Numerous passages have been completely omitted
+3. Character names and key terminology have been mistranslated
+4. Critical plot elements have been distorted, making the storyline difficult to follow
+
+For the detailed errors, please refer to the link: https://docs.google.com/spreadsheets/d/e/2PACX-1vSQWEcMpkf3H6Rfsn8Ww-ONc_WAnTSP9gFAGplZfptaU_7nXgJlX7-7_q2kx37Q9x_m96RRiDOIOZeK/pubhtml
+
+This situation has caused significant outrage among Taiwanese readers, with many expressing their disappointment on social media platforms and book review sites.
+We are deeply concerned that readers unfamiliar with the original Korean text may develop a negative impression of your work due to these translation issues.
+Despite formal complaints from readers, the Taiwanese publisher has failed to properly address these issues. They have only patched some of the omitted paragraphs without acknowledging the full extent of the problems or rectifying the numerous translation errors.
+Their response has been inadequate and does not demonstrate proper respect for your intellectual property.
+We wanted to ensure you were aware of how your work is being misrepresented in Taiwan.
+The current translation not only fails to represent the vision but actively damages the reputation of this excellent work.
+We hope you will consider reviewing your licensing agreement with Interstellar Publishing and require them to maintain proper translation standards that respect the integrity of your original work.
+Thank you for your attention to this matter.
+Sincerely,
+${userName}`;
+
+            // 生成 mailto 連結
+            let mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // 開啟信箱
+            window.location.href = mailtoLink;
+        }
+    </script>
+    <footer>
+        <small>Copyright © 2025 Kate Lee. All Rights Reserved.</small>
+    </footer>
+</body>
+</html>
