@@ -51,9 +51,19 @@
     <br/>
     <button onclick="sendMail()">點我發信</button>
     <p>🔍 想了解更多？請參考 <a href="https://www.plurk.com/p/3gyjtgycdo" target="_blank">噗浪討論串</a>。</p>
+    <p>ps. 點擊後如果沒有自動打開郵件APP，請改用下方的複製功能。</p>
+    <br/>
+    <br/>
+    <textarea class="copy-text" id="recipient-text"></textarea>
+    <textarea class="copy-text" id="message-text"></textarea>
+    <br/>
+    <button class="button" onclick="copyRecipient()">複製收件人地址</button>
+    <button class="button" onclick="copyMessage()">複製郵件內容</button>
+    <br/>
+    <br/>
 
     <script>
-        function sendMail() {
+        function generateBody() {
             let nameInput = document.getElementById("name");
             let userName = nameInput.value.trim();  // 去除空格
             let errorText = document.getElementById("error");
@@ -65,8 +75,6 @@
             } else {
                 errorText.style.display = "none";  // 隱藏錯誤訊息
             }
-            let recipient = "chungeorambook@daum.net, chungeorambook@hanmail.net";  // 收件人
-            let subject = "제목: [대만판 \"백작가의 망나니가 되었다\"] 심각한 번역 문제 신고";  // 主旨
             let body = `청어람 출판사 관계자님께,
 안녕하세요.
 저희는 "백작가의 망나니가 되었다"를 애정하는 대만 독자들입니다.
@@ -117,12 +125,45 @@ We hope you will consider reviewing your licensing agreement with Interstellar P
 Thank you for your attention to this matter.
 Sincerely,
 ${userName}`;
+            return body;
+        }
+        function sendMail() {
+            let recipient = "chungeorambook@daum.net, chungeorambook@hanmail.net";  // 收件人
+            let subject = "제목: [대만판 \"백작가의 망나니가 되었다\"] 심각한 번역 문제 신고";  // 主旨
+            let body = generateBody();
+
+            // 如果生成內容為空（即姓名未填寫），則不發送郵件
+            if (!body) return;
 
             // 生成 mailto 連結
             let mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             // 開啟信箱
             window.location.href = mailtoLink;
+        }
+
+        function copyRecipient() {
+            var recipientText = "chungeorambook@daum.net, chungeorambook@hanmail.net";
+            document.getElementById("recipient-text").innerText = recipientText;
+
+            navigator.clipboard.writeText(recipientText).then(function() {
+                alert("收件人地址已複製到剪貼簿！");
+            }).catch(function() {
+                alert("無法複製收件人地址，請手動複製。");
+            });
+        }
+        function copyMessage() {
+            var messageText = generateBody();
+
+            // 如果生成內容為空（即姓名未填寫），則不發送郵件
+            if (!messageText) return;
+            document.getElementById("message-text").innerText = messageText;
+
+            navigator.clipboard.writeText(messageText).then(function() {
+                alert("郵件內容已複製到剪貼簿！");
+            }).catch(function() {
+                alert("無法複製郵件內容，請手動複製。");
+            });
         }
     </script>
     <footer>
