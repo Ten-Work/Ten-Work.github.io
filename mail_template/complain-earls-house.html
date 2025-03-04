@@ -55,9 +55,11 @@
     <br/>
     <br/>
     <textarea class="copy-text" id="recipient-text"></textarea>
+    <textarea class="copy-text" id="subject-text"></textarea>
     <textarea class="copy-text" id="message-text"></textarea>
     <br/>
     <button class="button" onclick="copyRecipient()">複製收件人地址</button>
+    <button class="button" onclick="copySubject()">複製郵件主旨</button>
     <button class="button" onclick="copyMessage()">複製郵件內容</button>
     <br/>
     <br/>
@@ -152,6 +154,18 @@ ${userName}`;
                 alert("無法複製收件人地址，請手動複製。");
             });
         }
+
+        function copySubject() {
+            var subjectText = "제목: [대만판 \"백작가의 망나니가 되었다\"] 심각한 번역 문제 신고";
+            document.getElementById("subject-text").innerText = subjectText;
+
+            navigator.clipboard.writeText(subjectText).then(function() {
+                alert("郵件主旨已複製到剪貼簿！");
+            }).catch(function() {
+                alert("無法複製郵件主旨，請手動複製。");
+            });
+        }
+
         function copyMessage() {
             var messageText = generateBody();
 
