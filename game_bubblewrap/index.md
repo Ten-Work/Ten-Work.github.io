@@ -33,11 +33,7 @@ Glad that you like "PopRelax" (hereinafter collectively referred to as "this app
 
 ###  Introduction to the rules
 
-Bulls and cows is a puzzle game that uses clues to guess a string of unique numbers in the correct order.
-
-* If a guessed number is correct and in the correct position, the clue will show "1A" for each such occurrence. If there are two correctly positioned numbers, the clue will show "2A", and so on.
-* If a guessed number is correct but in the wrong position, the clue will show "1B" for each such occurrence. If there are two correctly guessed numbers but in the wrong positions, the clue will show "2B", and so forth..
-* If none of the guessed numbers are correct, the clue will show "0A0B".
+PopRelax is a bubble wrap game that makes sounds and is used to relieve stress.
 
 ###  Developer
 
