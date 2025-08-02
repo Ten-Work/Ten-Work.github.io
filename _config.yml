@@ -1,2 +1,3 @@
 name: "Ten-Work"
 title: false
+include: [".well-known"]
