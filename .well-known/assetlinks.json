@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "elfcup.game.bullsandcows",
+      "sha256_cert_fingerprints": [
+        "AC:22:38:BC:DA:43:DD:7B:D7:8A:33:CC:66:65:53:DA:1C:F0:56:FC:80:80:77:38:54:C2:16:5F:A5:90:19:AB"
+      ]
+    }
+  }
+]
