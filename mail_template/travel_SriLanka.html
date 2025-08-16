@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斯里蘭卡詢價信件</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+        }
+        #error {
+            color: red;
+            display: none;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:active {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+    <h2>斯里蘭卡詢價信件</h2>
+    
+    <input type="text" id="name" placeholder="請輸入您的署名">
+    <div id="error">⚠️ 請輸入您的署名</div>
+    <br/>
+    <button onclick="sendMail()">點我發信</button>
+    <p><strong>PS：</strong>點擊後如果沒有自動打開郵件APP，請改用下方的複製功能。</p>
+    <br/>
+    <br/>
+    <textarea class="copy-text" id="subject-text"></textarea>
+    <textarea class="copy-text" id="message-text" wrap="hard"></textarea>
+    <br/>
+    <button class="button" onclick="copySubject()">複製郵件主旨</button>
+    <button class="button" onclick="copyMessage()">複製郵件內容</button>
+    <br/>
+    <br/>
+
+    <script>
+        function generateBody() {
+            let nameInput = document.getElementById("name");
+            let userName = nameInput.value.trim();  // 去除空格
+            let errorText = document.getElementById("error");
+
+            if (userName === "") {
+                errorText.style.display = "block";  // 顯示錯誤訊息
+                nameInput.focus();  // 聚焦輸入框
+                return;
+            } else {
+                errorText.style.display = "none";  // 隱藏錯誤訊息
+            }
+            let body = `Hello,
+
+We are a group of three travelers visiting Sri Lanka from October 4 to October 11, 2025.
+We are looking for a customized travel package including private car service, driver/guide, accommodation booking, and other arrangements.
+Please kindly provide detailed information according to the following questions:
+1. Private Car Service
+ • We have 3 persons with 3 medium suitcases (24–25 inches).
+ • What car options do you provide for this group size and luggage? And what is the price? (Car must have air-conditioning.)
+
+2. Service Hours & Mileage
+ • How many hours per day is the car available?
+ • Is there a mileage limit?
+ • If we exceed hours or mileage, how is the extra cost?
+ • What is the maximum daily service time allowed?
+
+3. Included Costs & Extra Charges
+ • Does the package include tolls, parking fees, fuel, etc.?
+ • Any other additional costs we should expect?
+ • In case of driver illness or vehicle breakdown, will there be a backup driver/vehicle?
+ • Can we make small adjustments to the itinerary after discussion or due to bad weather or something else? And any extra fees for this?
+
+4. Driver & Guide
+ • Is there an option that the driver also serve as a tour guide? If yes, what is the cost?
+ • Language options: English-speaking, Chinese-speaking – and their respective prices.
+
+5. Insurance & Safety
+ • Is travel or vehicle insurance included?
+ • Do you have a 24-hour emergency contact window through phone or WhatsApp?
+ • In case of traffic accidents, sudden illness, or safety issues, can you help arrange medical assistance and vehicle replacement?
+
+6. Payment Terms
+ • Is a deposit required? If yes, what percentage?
+ • What payment methods are accepted, and are there extra fees (e.g., bank/transfer fees)?
+ • When and how is the balance payment made?
+
+7. Cancellation, Refund & Rescheduling Policy
+ • What is your cancellation, refund and rescheduling policy?
+ • How many days in advance must we notify you?
+ • Refund policy and terms if the agency cancels.
+
+8. Additional Services
+ • Can you arrange hotel booking, train tickets, and activity reservations for us if we need?
+
+9. Tentative Itinerary (Oct 4–11, 2025)
+Here’s is our itinerary for reference. Please feel free to provide suggestions or adjustments. Thanks
+
+Day 1 – Oct 4
+Negombo → Anuradhapura (Sacred City + Sri Maha Bodhi) → Dambulla (hotel)
+
+Day 2 – Oct 5
+Dambulla → Sigiriya Rock Fortress → Polonnaruwa Ancient City → Dambulla (hotel)
+
+Day 3 – Oct 6
+Dambulla Golden Temple → Kandy (Temple of the Tooth) → Kandy (hotel)
+
+Day 4 – Oct 7
+Train: Kandy → Nanu Oya → Nuwara Eliya (hotel)
+
+Day 5 – Oct 8
+Nuwara Eliya → Train to Ella (Nine Arches Bridge) → Yala (hotel)
+
+Day 6 – Oct 9
+Yala Safari → Weligama (Stilt Fishermen) → Galle (hotel)
+
+Day 7 – Oct 10
+Galle Fort → Coastal Train: Mount Laviniya to Colombo → Colombo (hotel)
+
+Day 8 – Oct 11
+Colombo sightseeing (Gangaramaya Temple, Red Mosque, Galle Face Green, Independence Memorial Hall) → Airport (flight: Oct 12, 00:50)
+
+We look forward to your reply with detailed information and quotation.
+Thank you for your assistance.
+
+Best regards,
+${userName}`;
+            return body;
+        }
+
+        function generateSubject() {
+            return "(Request for Quotation) Inquiry for Customized 8-Day Private Tour Service (Oct 4–11, 2025)";
+        }
+        
+        function sendMail() {
+            let recipient = "";  // 收件人
+            let subject = generateSubject();  // 主旨
+            let body = generateBody();
+
+            // 如果生成內容為空（即姓名未填寫），則不發送郵件
+            if (!body) return;
+
+            // 生成 mailto 連結
+            let mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // 開啟信箱
+            window.location.href = mailtoLink;
+        }
+
+        function copySubject() {
+            var subjectText = generateSubject();
+            document.getElementById("subject-text").innerText = subjectText;
+
+            navigator.clipboard.writeText(subjectText).then(function() {
+                alert("郵件主旨已複製到剪貼簿！");
+            }).catch(function() {
+                alert("無法複製郵件主旨，請手動複製。");
+            });
+        }
+
+        function copyMessage() {
+            var messageText = generateBody();
+
+            // 如果生成內容為空（即姓名未填寫），則不發送郵件
+            if (!messageText) return;
+            document.getElementById("message-text").innerText = messageText;
+
+            navigator.clipboard.writeText(messageText).then(function() {
+                alert("郵件內容已複製到剪貼簿！");
+            }).catch(function() {
+                alert("無法複製郵件內容，請手動複製。");
+            });
+        }
+    </script>
+    <footer>
+        <small>Copyright © 2025 Kate Lee. All Rights Reserved.</small>
+    </footer>
+</body>
+</html>
