@@ -130,9 +130,14 @@ Sincerely,
 ${userName}`;
             return body;
         }
+
+        function generateSubject() {
+            return "제목: [대만판 \"백작가의 망나니가 되었다\"] 심각한 번역 문제 신고";
+        }
+
         function sendMail() {
             let recipient = "chungeorambook@daum.net, chungeorambook@hanmail.net";  // 收件人
-            let subject = "제목: [대만판 \"백작가의 망나니가 되었다\"] 심각한 번역 문제 신고";  // 主旨
+            let subject =generateSubject();  // 主旨
             let body = generateBody();
 
             // 如果生成內容為空（即姓名未填寫），則不發送郵件
@@ -157,7 +162,7 @@ ${userName}`;
         }
 
         function copySubject() {
-            var subjectText = "제목: [대만판 \"백작가의 망나니가 되었다\"] 심각한 번역 문제 신고";
+            var subjectText = generateSubject();
             document.getElementById("subject-text").innerText = subjectText;
 
             navigator.clipboard.writeText(subjectText).then(function() {
