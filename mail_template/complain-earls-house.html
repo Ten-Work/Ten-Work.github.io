@@ -135,8 +135,12 @@ ${userName}`;
             return "제목: [대만판 \"백작가의 망나니가 되었다\"] 심각한 번역 문제 신고";
         }
 
+        function generateRecipient() {
+            return "chungeorambook@daum.net, chungeorambook@hanmail.net";
+        }
+
         function sendMail() {
-            let recipient = "chungeorambook@daum.net, chungeorambook@hanmail.net";  // 收件人
+            let recipient = generateRecipient();  // 收件人
             let subject =generateSubject();  // 主旨
             let body = generateBody();
 
@@ -151,7 +155,7 @@ ${userName}`;
         }
 
         function copyRecipient() {
-            var recipientText = "chungeorambook@daum.net, chungeorambook@hanmail.net";
+            var recipientText = generateRecipient();
             document.getElementById("recipient-text").innerText = recipientText;
 
             navigator.clipboard.writeText(recipientText).then(function() {
