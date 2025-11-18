@@ -7,7 +7,7 @@ title: 泡泡舒心
 
 # 泡泡舒心
 
-很高興您喜歡「泡泡舒心」（之後統一稱為「本應用程式」），本應用程式是根據1A2B益智遊戲變化而來的。
+很高興您喜歡「泡泡舒心」（之後統一稱為「本應用程式」），本應用程式是根據包裝常用的泡泡紙變化而來的。
 
 ###  規則簡介
 
@@ -29,7 +29,7 @@ Kate Lee。
 
 # PopRelax
 
-Glad that you like "PopRelax" (hereinafter collectively referred to as "this application"). This application is based on the Bulls and cows.
+Glad that you like "PopRelax" (hereinafter collectively referred to as "this application"). This application is based on a variation of bubble wrap commonly used in packaging.
 
 ###  Introduction to the rules
 
