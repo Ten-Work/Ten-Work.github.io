@@ -170,18 +170,14 @@ permalink: /404.html
         // 建構 Android Intent URL
         const host = 'ten-work.github.io';
         const path = fullPath.replace(/^\//, '');
-        const appUrl = `intent://${host}/${path}#Intent;scheme=https;package=${PACKAGE_NAME};S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};end`;
+        const appUrl = `guessnumber://${host}/${path}`;
         
         console.log('App URL:', appUrl);
         
         let countdown = 10;
         const timerElement = document.getElementById('timer');
         const playStoreButton = document.getElementById('playStoreBtn');
-        
-        // 追蹤 App 是否已開啟
-        let redirectAttempts = 0;
-        const maxAttempts = 3;
-        
+                
         // 嘗試開啟 App
         function tryOpenApp() {
             window.location.href = appUrl;
@@ -189,11 +185,7 @@ permalink: /404.html
         
         // 嘗試跳轉到 Play Store
         function tryRedirectToPlayStore() {            
-            if (document.hasFocus()) {
-                redirectAttempts++;
-                console.log(`嘗試跳轉到 Play Store (${redirectAttempts}/${maxAttempts})`);
-                window.location.replace(PLAY_STORE_URL);
-            }
+            window.location.replace(PLAY_STORE_URL);
         }
         
         // 倒數計時
