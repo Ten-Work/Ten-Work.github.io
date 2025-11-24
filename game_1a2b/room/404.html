@@ -1,34 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redirecting...</title>
-<script>
-(function() {
-    // 取得 URL path
-    const path = window.location.pathname; 
-    // 解析 room id，例如 /game_1a2b/room/cQVIam
-    const match = path.match(/\/game_1a2b\/room\/(.+)/);
-    const roomId = match ? match[1] : null;
-
-    // Android App 的 intent URL
-    const appUrl = `intent://game_1a2b/room/${roomId}#Intent;scheme=https;package=elfcup.game.bullsandcows;end`;
-
-    // Play 商店 URL
-    const playStoreUrl = 'https://play.google.com/store/apps/details?id=elfcup.game.bullsandcows';
-
-    // 嘗試開啟 App
-    window.location.replace(appUrl);
-
-    // 如果 2 秒後還在頁面，跳轉到 Play 商店
-    setTimeout(function() {
-        window.location.replace(playStoreUrl);
-    }, 2000);
-})();
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開啟 App</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 400px;
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s;
+            margin: 0.5rem;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .countdown {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
-<p>Redirecting...</p>
+    <div class="container">
+        <div class="icon">📱</div>
+        <h1 id="title">正在開啟 App...</h1>
+        <p id="description">如果 App 沒有自動開啟，10秒後將前往 Google Play</p>
+        
+        <br>
+        <a href="https://play.google.com/store/apps/details?id=elfcup.game.bullsandcows" class="button secondary" id="playStoreBtn">前往 Google Play</a>
+        
+        <div class="countdown">
+            <span id="timer"></span>
+        </div>
+    </div>
+
+    <script>
+        // 多語言文字
+        const i18n = {
+            'zh-TW': {
+                title: '正在開啟 App...',
+                description: '如果 App 沒有自動開啟，10秒後將前往 Google Play',
+                playStore: '前往 Google Play',
+                countdown: (n) => `${n} 秒後將前往 Google Play`,
+                redirecting: '正在跳轉到 Google Play...',
+                manualRedirect: '如果沒有自動跳轉，<br>請點擊下方「前往 Google Play」按鈕'
+            },
+            'zh-CN': {
+                title: '正在打开 App...',
+                description: '如果 App 没有自动打开，10秒后将前往 Google Play',                
+                playStore: '前往 Google Play',
+                countdown: (n) => `${n} 秒后将前往 Google Play`,
+                redirecting: '正在跳转到 Google Play...',
+                manualRedirect: '如果没有自动跳转，<br>请点击下方「前往 Google Play」按钮'
+            },
+            'en': {
+                title: 'Opening App...',
+                description: 'If the app doesn\'t open automatically, redirecting to Google Play in 10 seconds',
+                playStore: 'Go to Google Play',
+                countdown: (n) => `Redirecting to Google Play in ${n} seconds`,
+                redirecting: 'Redirecting to Google Play...',
+                manualRedirect: 'If not redirected automatically,<br>please click the "Go to Google Play" button below'
+            },
+            'ja': {
+                title: 'アプリを開いています...',
+                description: 'アプリが自動的に開かない場合は、10秒後に Google Play に移動します',
+                playStore: 'Google Play へ',
+                countdown: (n) => `${n} 秒後に Google Play に移動します`,
+                redirecting: 'Google Play に移動中...',
+                manualRedirect: '自動的にリダイレクトされない場合は、<br>下の「Google Play へ」ボタンをクリックしてください'
+            },
+            'ko': {
+                title: '앱을 여는 중...',
+                description: '앱이 자동으로 열리지 않으면 10초 후 Google Play로 이동합니다',
+                playStore: 'Google Play로 이동',
+                countdown: (n) => `${n}초 후 Google Play로 이동합니다`,
+                redirecting: 'Google Play로 이동 중...',
+                manualRedirect: '자동으로 리디렉션되지 않으면<br>아래 "Google Play로 이동" 버튼을 클릭하세요'
+            }
+        };
+        
+        // 偵測使用者語言
+        function detectLanguage() {
+            const lang = navigator.language || navigator.userLanguage;
+            
+            // 精確匹配
+            if (i18n[lang]) return lang;
+            
+            // 匹配主要語言（例如 en-US -> en）
+            const mainLang = lang.split('-')[0];
+            if (mainLang === 'zh') {
+                // 中文特殊處理：區分繁簡
+                return lang.toLowerCase().includes('tw') || lang.toLowerCase().includes('hk') ? 'zh-TW' : 'zh-CN';
+            }
+            if (i18n[mainLang]) return mainLang;
+            
+            // 預設英文
+            return 'en';
+        }
+        
+        const currentLang = detectLanguage();
+        const t = i18n[currentLang];
+        
+        // 更新頁面文字
+        document.getElementById('title').textContent = t.title;
+        document.getElementById('description').textContent = t.description;
+        document.getElementById('playStoreBtn').textContent = t.playStore;
+        
+        const PACKAGE_NAME = 'elfcup.game.bullsandcows';
+        const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`;
+        
+        // 從 URL 中提取路徑和參數
+        const fullPath = window.location.pathname + window.location.search;
+        
+        // 建構 Android Intent URL
+        const host = 'ten-work.github.io';
+        const path = fullPath.replace(/^\//, '');
+        const appUrl = `intent://${host}/${path}#Intent;scheme=https;package=${PACKAGE_NAME};S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};end`;
+        
+        console.log('App URL:', appUrl);
+        
+        let countdown = 10;
+        const timerElement = document.getElementById('timer');
+        const playStoreButton = document.getElementById('playStoreBtn');
+        
+        // 追蹤 App 是否已開啟
+        let redirectAttempts = 0;
+        const maxAttempts = 3;
+        
+        // 嘗試開啟 App
+        function tryOpenApp() {
+            window.location.href = appUrl;
+        }
+        
+        // 嘗試跳轉到 Play Store
+        function tryRedirectToPlayStore() {            
+            if (document.hasFocus()) {
+                redirectAttempts++;
+                console.log(`嘗試跳轉到 Play Store (${redirectAttempts}/${maxAttempts})`);
+                window.location.replace(PLAY_STORE_URL);
+            }
+        }
+        
+        // 倒數計時
+        function updateCountdown() {
+            if (countdown > 0) {
+                timerElement.textContent = t.countdown(countdown);
+                countdown--;
+                setTimeout(updateCountdown, 1000);
+            } else {
+                timerElement.textContent = t.redirecting;
+            }
+        }
+        
+        // 頁面載入時自動執行
+        window.addEventListener('DOMContentLoaded', () => {
+            tryOpenApp();
+            updateCountdown();
+            setTimeout(() => tryRedirectToPlayStore(), 10000);
+        });
+    </script>
+    
+    <noscript>
+        <!-- 如果 JavaScript 被禁用，直接跳轉到 Play Store -->
+        <meta http-equiv="refresh" content="0; URL=https://play.google.com/store/apps/details?id=elfcup.game.bullsandcows">
+    </noscript>
 </body>
 </html>
